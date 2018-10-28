@@ -1,0 +1,45 @@
+@import "../../global.less";
+
+.menu-nav {
+  width: 200px;
+  font-size: 14px;
+
+  @list-height: 50px;
+  li {
+    padding-left: 20px;
+    line-height: @list-height;
+
+    a {
+      color: rgb(130,130,130);
+
+      span {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  li:not(.menu-brand):hover {
+    .gradient-blue-azure();
+
+    a {
+      color: @white-10;
+    }
+  }
+
+  .menu-brand {
+    line-height: @list-height + 20px;
+  }
+
+  .menu-active {
+
+    a {
+      color: @aqua;
+    }
+  }
+
+  .uk-nav-divider {
+    margin: 0;
+    opacity: 0.1;
+    border-top-color: @purple-light;
+  }
+}

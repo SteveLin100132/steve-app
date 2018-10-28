@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/normalize.css/normalize.css";
+@import "./global.less";
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color: rgb(130, 130, 130);
+  font-family: '微軟正黑體', 'Arial';
+  font-size: calc(1vw + 1vh + 0.5vmin);
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.theme-base {
+  // color: @black-6;
+  color: rgb(130, 130, 130);
+  // background-color: @purple-dark;
+  // background-color: @black-9;
+  // background-color: rgb(5, 0, 27);
+  background-color: whitesmoke;
+}
+

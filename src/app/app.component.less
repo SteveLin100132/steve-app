@@ -1,0 +1,141 @@
+@import "../global.less";
+
+.app-container {
+  height: 100vh;
+
+  .menu-container {
+    z-index: 1;
+    float: left;
+    height: 100vh;
+    display: block;
+    position: relative;
+    overflow-x: hidden;
+    border-right: 1px solid rgba(0,0,0,0.05);
+    background-color: rgb(255, 255, 255);
+    .transition-duration(500ms);
+  }
+
+  .header-container, .content-container {
+    float: left;
+    display: block;
+    font-size: 0.5rem;
+  }
+
+  .header-container {
+    background-color: #ffffff;
+  }
+
+  .content-container {
+    overflow: auto;
+    height: calc(100% - 80px);
+    padding: 30px 20px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 20px;
+
+    .card {
+      min-width: 400px;
+      padding: 30px 25px;
+      overflow-y: auto;
+      grid-row-start: 1;
+      grid-row-end: -1;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      background-color: #ffffff;
+      border: 1px solid rgba(0,0,0,0.05);
+
+      h3 {
+        color: @aqua;
+        font-size: 0.8rem;
+        padding-bottom: 5px;
+
+        span[uk-icon] {
+          margin-right: 10px;
+          display: inline-block;
+        }
+      }
+
+      hr {
+        margin: 0 auto;
+        position: relative;
+        border: none;
+        border-top: 1px solid rgba(0,0,0,0.05);
+      }
+
+      form {
+        font-size: 0.45rem;
+
+        .control-group {
+          margin: 25px 0;
+          display: flex;
+          height: 35px;
+          line-height: 35px;
+
+          .title {
+            min-width: 70px;
+            display: inline-block;
+          }
+
+         app-input-text {
+            width: 100%;
+            height: 35px;
+            font-size: 0.9em;
+            margin-left: 10px;
+            position: relative;
+            color: rgb(130,130,130);
+          }
+
+          app-input-radio {
+            display: flex;
+            align-items: center;
+          }
+
+          app-dropdown {
+            width: 150px;
+            height: 35px;
+            margin-left: 10px;
+            color: rgb(130,130,130);
+          }
+        }
+      }
+    }
+
+    .card1 {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+
+    .uk-card-title {
+      font-size: 1.2rem;
+    }
+
+    .uk-form-label {
+      font-size: 0.5rem;
+    }
+  }
+
+  &[data-state='normal-state'] {
+
+    .menu-container {
+      width: 200px;
+    }
+
+    .header-container, .content-container {
+      width: calc(100% - 200px);
+      .transition-duration(500ms);
+    }
+  }
+
+  &[data-state='hidden-state'] {
+
+    .menu-container {
+      width: 60px;
+    }
+
+    .header-container, .content-container {
+      width: calc(100% - 60px);
+      .transition-duration(600ms);
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import "../../../global.less";
+
+div {
+  width: inherit;
+  height: inherit;
+
+  input[type='text'] {
+    z-index: 1;
+    width: inherit;
+    height: inherit;
+    padding-left: 15px;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 30px;
+  }
+
+  .normal {
+    color: inherit;
+    border: 1px solid rgba(0,0,0,0.15);
+  }
+
+  .error {
+    border: none;
+    color: @white-10;
+    .gradient-red-orange();
+
+    &::placeholder {
+      color: @white-10;
+    }
+  }
+
+  .border {
+    top: -2px;
+    left: -2px;
+    z-index: 0;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 30px;
+    position: absolute;
+    // .gradient-red-orange();
+  }
+}

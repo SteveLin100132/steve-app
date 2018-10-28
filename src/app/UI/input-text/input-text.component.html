@@ -1,0 +1,9 @@
+<div *ngIf="control !== undefined">
+  <input [class]="control.errors != null ? 'error' : 'normal'" type="text"
+         [(ngModel)]="value" [placeholder]="placeholder" (keyup)="inputText()">
+  <div *ngIf="control.errors" class="border"></div>
+</div>
+<div *ngIf="control === undefined">
+  <input class="normal" type="text" [(ngModel)]="value"
+         [placeholder]="placeholder" (keyup)="inputText()">
+</div>

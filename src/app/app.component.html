@@ -1,21 +1,74 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="theme-base app-container" [attr.data-state]="menuState ? 'normal-state' : 'hidden-state'">
+  <div class="menu-container">
+    <app-side-menu></app-side-menu>
+  </div>
 
-<router-outlet></router-outlet>
+  <div class="header-container">
+    <app-header (menuToggled)="getMenuState($event)"></app-header>
+  </div>
+
+  <div class="content-container">
+    <div class="card">
+      <h3><span uk-icon="icon: users; ratio: 1.25"></span> 基本資料</h3>
+      <hr>
+      <form [formGroup]="basicForm">
+        <div class="control-group">
+          <label class="title">中文姓名</label>
+          <app-input-text class="input-name" formControlName="chineseName"
+                          placeholder="輸入中文姓名">
+          </app-input-text>
+        </div>
+        <div class="control-group">
+          <label class="title">英文姓名</label>
+          <app-input-text class="input-name" formControlName="englishName"
+                          placeholder="輸入英文姓名">
+          </app-input-text>
+        </div>
+        <div class="control-group">
+          <label class="title">性別</label>
+          <app-input-radio formControlName="gender" name="gender" value="男">
+          </app-input-radio>
+          <label>男</label>
+          <app-input-radio formControlName="gender" name="gender" value="女">
+          </app-input-radio>
+          <label>女</label>
+        </div>
+        <div class="control-group">
+          <label class="title">兵役狀況</label>
+          <app-input-radio formControlName="military" name="military"
+                           value="役畢">
+          </app-input-radio>
+          <label>役畢</label>
+          <app-input-radio formControlName="military" name="military"
+                           value="未役">
+          </app-input-radio>
+          <label>未役</label>
+          <app-input-radio formControlName="military" name="military"
+                           value="免役">
+          </app-input-radio>
+          <label>免役</label>
+        </div>
+        <div class="control-group">
+          <label class="title">通訊地址</label>
+          <app-dropdown formControlName="country" [options]="countryList">
+          </app-dropdown>
+          <app-input-text class="input-address" formControlName="address"
+                          placeholder="輸入地址">
+          </app-input-text>
+        </div>
+        <div class="control-group">
+          <label class="title">連絡電話</label>
+          <app-input-text class="input-phone" formControlName="phone"
+                          placeholder="輸入電話">
+          </app-input-text>
+        </div>
+      </form>
+
+      <pre>{{ basicForm.controls.country.value | json }}
+      </pre>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
+
